@@ -1,0 +1,15 @@
+.DS_Store
+*.swp
+.vscode
+.idea
+.history/
+node_modules
+npm-debug.log
+package-lock.json
+yarn-error.log
+dist
+build
+.next
+out
+undefined
+bin/start.txt
