@@ -24,7 +24,7 @@ const main = () => {
         //     }
         // });
 
-        pwm.setPulseLength(0, 40);
+        pwm.setPulseLength(0, 1000);
         // const test = () => {
         //      pwm.setPulseLength(0, 42);
         //     setTimeout(() => {
