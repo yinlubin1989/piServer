@@ -32,4 +32,4 @@ const main = () => {
     server.listen(3210)
 }
 
-module.exports = main;
+module.exports = main
