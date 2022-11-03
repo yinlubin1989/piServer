@@ -25,9 +25,9 @@ const main = () => {
         // });
 
         const test = () => {
-            pwm.setDutyCycle(0, 0.25);
+             pwm.setPulseLength(0, 42);
             setTimeout(() => {
-                pwm.setDutyCycle(0, 0.85);
+                 pwm.setPulseLength(0, 255);
                 test();
             }, 1000)
         }
