@@ -1,10 +1,10 @@
-const spawn = require("child_process").spawn;
-const WebSocket = require('ws');
-const http = require('http');
-const url = require('url');
+const spawn = require("child_process").spawn
+const WebSocket = require('ws')
+const http = require('http')
+const url = require('url')
 
 const createVideoStreamer = (() => {
-    let streamer = null;
+    let streamer = null
     return (wss, {
         mode = 1,
         quality = 500,
@@ -31,23 +31,23 @@ const createVideoStreamer = (() => {
         if (streamer) {
             streamer.kill("SIGHUP")
         }
-        streamer = spawn('ffmpeg', ffmpegOptions);
+        streamer = spawn('ffmpeg', ffmpegOptions)
         streamer.stdout.on('data', (frame) => {
             if (wss.clients.size > 0) {
                 wss.clients.forEach(function (client) {
                     if (client.readyState === WebSocket.OPEN) {
-                      client.send(frame);
+                      client.send(frame)
                     }
                 })
             } else {
                 streamer.kill("SIGHUP")
             }
-        });
+        })
     }
 })()
 
 const createAudioStreamer = (() => {
-    let streamer = null;
+    let streamer = null
     return (wss) => {
         const ffmpegOptions = [
             "-f", "alsa",
@@ -61,54 +61,54 @@ const createAudioStreamer = (() => {
         if (streamer) {
             streamer.kill("SIGHUP")
         }
-        streamer = spawn('ffmpeg', ffmpegOptions);
+        streamer = spawn('ffmpeg', ffmpegOptions)
         streamer.stdout.on('data', (frame) => {
             if (wss.clients.size > 0) {
                 wss.clients.forEach(function (client) {
                     if (client.readyState === WebSocket.OPEN) {
-                      client.send(frame);
+                      client.send(frame)
                     }
                 })
             } else {
                 streamer.kill("SIGHUP")
             }
-        });
+        })
     }
 })()
 
 const main = () => {
-    const server = http.createServer();
-    const wsVideo = new WebSocket.Server({ noServer: true });
-    const wsAudio = new WebSocket.Server({ noServer: true });
+    const server = http.createServer()
+    const wsVideo = new WebSocket.Server({ noServer: true })
+    const wsAudio = new WebSocket.Server({ noServer: true })
     
     wsVideo.on('connection', function connection(ws) {
         ws.on('message', (message) => {
             createVideoStreamer(wsVideo, JSON.parse(message).action)
         })
-    });
+    })
        
     wsAudio.on('connection', function connection(ws) {
         ws.on('message', () => {
             createAudioStreamer(wsAudio)
         })
-    });
+    })
     
     server.on('upgrade', function upgrade(request, socket, head) {
-        const pathname = url.parse(request.url).pathname;
+        const pathname = url.parse(request.url).pathname
         if (pathname === '/video') {
             wsVideo.handleUpgrade(request, socket, head, function done(ws) {
-                wsVideo.emit('connection', ws, request);
-            });
+                wsVideo.emit('connection', ws, request)
+            })
         } else if (pathname === '/audio') {
             wsAudio.handleUpgrade(request, socket, head, function done(ws) {
-                wsAudio.emit('connection', ws, request);
-            });
+                wsAudio.emit('connection', ws, request)
+            })
         } else {
-            socket.destroy();
+            socket.destroy()
         }
-    });
+    })
        
-    server.listen(8082);
+    server.listen(8082)
 }
 
-module.exports = main;
+module.exports = main

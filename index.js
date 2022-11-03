@@ -1,5 +1,5 @@
-const videoAudioServer = require('./videoAudioServer');
-const pcaServoDriver = require('./pcaServoDriver');
+const videoAudioServer = require('./videoAudioServer')
+const pcaServoDriver = require('./pcaServoDriver')
 
-videoAudioServer();
-pcaServoDriver();
+videoAudioServer()
+pcaServoDriver()
