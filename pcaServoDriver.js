@@ -18,7 +18,7 @@ const main = () => {
     
         // Set channel 0 to turn on on step 42 and off on step 255
         // (with optional callback)
-        pwm.setPulseRange(0, 42, 255, function() {
+        pwm.setPulseRange(1, 42, 255, function() {
             if (err) {
                 console.error("Error setting pulse range.");
             } else {
