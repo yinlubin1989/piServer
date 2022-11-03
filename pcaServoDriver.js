@@ -16,15 +16,22 @@ const main = () => {
         }
         console.log("Initialization done");
     
-        // Set channel 0 to turn on on step 42 and off on step 255
-        // (with optional callback)
-        pwm.setPulseRange(1, 42, 255, function() {
-            if (err) {
-                console.error("Error setting pulse range.");
-            } else {
-                console.log("Pulse range set.");
-            }
-        });
+        // pwm.setPulseRange(1, 42, 255, function() {
+        //     if (err) {
+        //         console.error("Error setting pulse range.");
+        //     } else {
+        //         console.log("Pulse range set.");
+        //     }
+        // });
+
+        const test = () => {
+            pwm.setPulseLength(0, 500);
+            setTimeout(() => {
+                pwm.setPulseLength(0, 1500);
+                test();
+            }, 1000)
+        }
+        test();
     
         // Set the pulse length to 1500 microseconds for channel 2
         // pwm.setPulseLength(2, 1500);
