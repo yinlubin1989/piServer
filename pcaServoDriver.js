@@ -24,14 +24,15 @@ const main = () => {
         //     }
         // });
 
-        const test = () => {
-             pwm.setPulseLength(0, 42);
-            setTimeout(() => {
-                 pwm.setPulseLength(0, 255);
-                test();
-            }, 1000)
-        }
-        test();
+        pwm.setPulseLength(0, 40);
+        // const test = () => {
+        //      pwm.setPulseLength(0, 42);
+        //     setTimeout(() => {
+        //          pwm.setPulseLength(0, 255);
+        //         test();
+        //     }, 1000)
+        // }
+        // test();
     
         // Set the pulse length to 1500 microseconds for channel 2
         // pwm.setPulseLength(2, 1500);
