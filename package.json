@@ -18,6 +18,8 @@
   "homepage": "https://github.com/yinlubin1989/piServer#readme",
   "dependencies": {
     "@clusterws/cws": "^3.0.0",
+    "i2c-bus": "^5.2.2",
+    "pca9685": "^5.0.0",
     "ws": "^7.3.1"
   }
 }
