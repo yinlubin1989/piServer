@@ -35,7 +35,7 @@ const main = () => {
         }, 500)
         new Server(server, {
             cors: {
-                origin: '*',
+                origin: 'http://localhost:5174',
                 credentials: true
             }
         }).on('connection', (socket) => {
