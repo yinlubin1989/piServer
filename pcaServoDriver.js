@@ -42,8 +42,11 @@ const main = () => {
             socket.on('hb', () => {
 
             })
-            socket.on('pwm', (command) => {
+            socket.on('setPulseLength', (command) => {
                 pcaDriver.setPulseLength(command.pin, command.data)
+            })
+            socket.on('channelOn', (command) => {
+                pcaDriver.channelOn(command.pin)
             })
         })    
     })
