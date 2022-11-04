@@ -31,8 +31,10 @@ const main = () => {
         setInterval(() => {
         }, 500)
         socketio(server, {
-            origin: '*',
-            credentials: true
+            cors: {
+                origin: '*',
+                credentials: true
+            }
         }).on('connection', (socket) => {
             socket.on('hb', () => {
 
