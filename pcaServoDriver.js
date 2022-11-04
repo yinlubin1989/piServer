@@ -30,7 +30,10 @@ const main = () => {
         }
         setInterval(() => {
         }, 500)
-        socketio(server).on('connection', (socket) => {
+        socketio(server, {
+            origin: '*',
+            credentials: true
+        }).on('connection', (socket) => {
             socket.on('hb', () => {
 
             })
