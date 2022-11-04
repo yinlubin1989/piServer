@@ -16,6 +16,9 @@ const main = () => {
         response.header('Access-Control-Allow-Methods', 'DELETE,PUT,POST,GET,OPTIONS')
         next()
     })
+    app.get('/t', function(request, response, next) {
+        response.end('ok')
+    })
     const server = http.createServer(app)
     const options = {
         i2c: i2cBus.openSync(1),
