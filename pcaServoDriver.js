@@ -48,6 +48,9 @@ const main = () => {
             socket.on('channelOn', (command) => {
                 pcaDriver.channelOn(command.pin)
             })
+            socket.on('channelOff', (command) => {
+                pcaDriver.channelOff(command.pin)
+            })
         })    
     })
     server.listen(3210)
