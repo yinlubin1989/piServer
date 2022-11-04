@@ -1,7 +1,7 @@
 const express = require('express')
 const http = require('http')
 const cookieParser = require('cookie-parser')
-const socketio = require('socket.io')
+const { Server } = require('socket.io')
 const i2cBus = require("i2c-bus")
 const Pca9685Driver = require("pca9685").Pca9685Driver
 
@@ -30,7 +30,7 @@ const main = () => {
         }
         setInterval(() => {
         }, 500)
-        socketio(server, {
+        new Server(server, {
             cors: {
                 origin: '*',
                 credentials: true

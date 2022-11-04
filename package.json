@@ -18,8 +18,11 @@
   "homepage": "https://github.com/yinlubin1989/piServer#readme",
   "dependencies": {
     "@clusterws/cws": "^3.0.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
     "i2c-bus": "^5.2.2",
     "pca9685": "^5.0.0",
+    "socket.io": "^4.5.3",
     "ws": "^7.3.1"
   }
 }
