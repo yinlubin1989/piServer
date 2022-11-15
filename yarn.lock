@@ -430,6 +430,14 @@ pca9685@^5.0.0:
     i2c-bus "^5.2.1"
     rxjs "^6.6.3"
 
+pigpio@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/pigpio/-/pigpio-3.3.1.tgz#fc31885ea2bfb335cccb80b9d78b443fcfe56b90"
+  integrity sha512-z7J55K14IwWkA+oW5JHzWcgwThFAuJ7IzV3A2//yRm4jJ2DTU0DHIy91DB0siOi12rvvlrIhRetEuAo0ztF/vQ==
+  dependencies:
+    bindings "^1.5.0"
+    nan "^2.14.2"
+
 proxy-addr@~2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.7.tgz#f19fe69ceab311eeb94b42e70e8c2070f9ba1025"
