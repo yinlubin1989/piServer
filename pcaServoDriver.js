@@ -66,7 +66,6 @@ const main = () => {
     server.listen(3210)
 
     const GpioVoltage = new Gpio(10, { mode: Gpio.INPUT, alert: true })
-
     GpioVoltage.on('alert', (level, tick) => {
         console.log('----->', level, tick)
     })
