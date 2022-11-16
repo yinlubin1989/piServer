@@ -2,8 +2,8 @@ const express = require('express')
 const http = require('http')
 const cookieParser = require('cookie-parser')
 const { Server } = require('socket.io')
-const i2cBus = require("i2c-bus")
-const Pca9685Driver = require("pca9685").Pca9685Driver
+const i2cBus = require('i2c-bus')
+const Pca9685Driver = require('pca9685').Pca9685Driver
 
 const main = () => {
     const app = express()
@@ -41,8 +41,8 @@ const main = () => {
         }).on('connection', (socket) => {
             socket.hbTime = Data.now()
             setInterval(() => {
-                if (Data.now() - socket.hbTime > 500) {
-                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                if (Data.now() - socket.hbTime > 300) {
+                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
                         .forEach((item) => {
                             pcaDriver.channelOff(item)
                         })
