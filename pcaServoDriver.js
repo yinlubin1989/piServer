@@ -40,9 +40,9 @@ const main = () => {
                 credentials: true
             }
         }).on('connection', (socket) => {
-            socket.hbTime = Data.now()
+            socket.hbTime = Date.now()
             setInterval(() => {
-                if (Data.now() - socket.hbTime > 300) {
+                if (Date.now() - socket.hbTime > 300) {
                     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
                         .forEach((item) => {
                             pcaDriver.channelOff(item)
@@ -50,10 +50,10 @@ const main = () => {
                 }
             }, 300)
             socket.on('hb', () => {
-                socket.hbTime = Data.now()
+                socket.hbTime = Date.now()
             })
             socket.on('setPulseLength', (command) => {
-                pcaDriver.setPulseLength(command.pin, command.data)
+                pcaDriver.setPulseLength(command.pin, command.Date)
             })
             socket.on('channelOn', (command) => {
                 pcaDriver.channelOn(command.pin)
