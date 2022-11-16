@@ -53,7 +53,7 @@ const main = () => {
                 socket.hbTime = Date.now()
             })
             socket.on('setPulseLength', (command) => {
-                pcaDriver.setPulseLength(command.pin, command.Date)
+                pcaDriver.setPulseLength(command.pin, command.data)
             })
             socket.on('channelOn', (command) => {
                 pcaDriver.channelOn(command.pin)
