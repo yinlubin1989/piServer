@@ -2,6 +2,7 @@ const express = require('express')
 const http = require('http')
 const cookieParser = require('cookie-parser')
 const { Server } = require('socket.io')
+const Gpio = require('pigpio').Gpio
 const i2cBus = require('i2c-bus')
 const Pca9685Driver = require('pca9685').Pca9685Driver
 
@@ -63,6 +64,12 @@ const main = () => {
         })    
     })
     server.listen(3210)
+
+    const GpioVoltage = new Gpio(10, { mode: Gpio.INPUT, alert: true })
+
+    GpioVoltage.on('alert', (level, tick) => {
+        console.log('----->', level, tick)
+    })
 }
 
 module.exports = main
