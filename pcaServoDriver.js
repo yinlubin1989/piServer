@@ -41,14 +41,14 @@ const main = () => {
             }
         }).on('connection', (socket) => {
             let hbTime = Date.now()
-            setInterval(() => {
-                if (Date.now() - hbTime > 10000) {
-                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-                        .forEach((item) => {
-                            pcaDriver.channelOff(item)
-                        })
-                }
-            }, 500)
+            // setInterval(() => {
+            //     if (Date.now() - hbTime > 10000) {
+            //         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+            //             .forEach((item) => {
+            //                 pcaDriver.channelOff(item)
+            //             })
+            //     }
+            // }, 500)
             socket.on('hb', () => {
                 hbTime = Date.now()
             })
