@@ -50,18 +50,18 @@ const main = () => {
                 }
             }, 500)
             socket.on('hb', () => {
-                let hbTime = Date.now()
+                hbTime = Date.now()
             })
             socket.on('setPulseLength', (command) => {
-                let hbTime = Date.now()
+                hbTime = Date.now()
                 pcaDriver.setPulseLength(command.pin, command.data)
             })
             socket.on('channelOn', (command) => {
-                let hbTime = Date.now()
+                hbTime = Date.now()
                 pcaDriver.channelOn(command.pin)
             })
             socket.on('channelOff', (command) => {
-                let hbTime = Date.now()
+                hbTime = Date.now()
                 pcaDriver.channelOff(command.pin)
             })
         })    
