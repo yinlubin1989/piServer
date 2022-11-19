@@ -36,19 +36,19 @@ const main = () => {
         }, 500)
         new Server(server, {
             cors: {
-                origin: ['http://localhost:5174', 'http://car.xdf.link'],
+                origin: ['http://localhost:5174', 'http://192.168.31.142:5174', 'http://car.xdf.link'],
                 credentials: true
             }
         }).on('connection', (socket) => {
             socket.hbTime = Date.now()
             setInterval(() => {
-                if (Date.now() - socket.hbTime > 300) {
+                if (Date.now() - socket.hbTime > 1000) {
                     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
                         .forEach((item) => {
                             pcaDriver.channelOff(item)
                         })
                 }
-            }, 200)
+            }, 500)
             socket.on('hb', () => {
                 socket.hbTime = Date.now()
             })
