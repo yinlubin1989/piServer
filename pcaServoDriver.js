@@ -27,6 +27,15 @@ const main = () => {
         frequency: 50,
         debug: false
     }
+    let hbTime = Date.now()
+    setInterval(() => {
+        if (Date.now() - hbTime > 1000) {
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                .forEach((item) => {
+                    pcaDriver.channelOff(item)
+                })
+        }
+    }, 500)
     const pcaDriver = new Pca9685Driver(options, (err) => {
         if (err) {
             console.error("Error initializing PCA9685")
@@ -40,15 +49,6 @@ const main = () => {
                 credentials: true
             }
         }).on('connection', (socket) => {
-            let hbTime = Date.now()
-            // setInterval(() => {
-            //     if (Date.now() - hbTime > 10000) {
-            //         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-            //             .forEach((item) => {
-            //                 pcaDriver.channelOff(item)
-            //             })
-            //     }
-            // }, 500)
             socket.on('hb', () => {
                 hbTime = Date.now()
             })
